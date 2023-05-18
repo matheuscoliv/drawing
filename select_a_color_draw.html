@@ -1,0 +1,31 @@
+<canvas width="600" height="400"></canvas>
+Select a color <input type="color">
+
+<script>
+  var palette = document.querySelector('input');
+  var screen = document.querySelector('canvas');
+  var paintbrush = screen.getContext('2d');
+  paintbrush.fillStyle = 'grey';
+  paintbrush.fillRect(0, 0, 600, 400);
+  var draw = false;
+
+  function drawCircle(event) {
+    if (draw) {
+      var x = event.pageX - screen.offsetLeft;
+      var y = event.pageY - screen.offsetTop;
+      paintbrush.fillStyle = palette.value; // always got the current palette value
+      paintbrush.beginPath();
+      paintbrush.arc(x, y, 10, 0, 2 * 3.14);
+      paintbrush.fill();
+    }
+    console.log(x + ',' + y);
+  }
+  screen.onmousemove = drawCircle;
+  //Assinging dirrectly the anonymous function
+  screen.onmousedown = function() {
+    draw = true;
+  }
+  screen.onmouseup = function() {
+    draw = false;
+  }
+</script>

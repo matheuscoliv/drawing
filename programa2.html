@@ -1,0 +1,27 @@
+<canvas width = "600" height = "400"></canvas>
+<script>
+
+	function drawSquare(x, y, color) {
+	
+	var screen = document.querySelector('canvas');
+	var paintbrush = screen.getContext('2d');
+
+	paintbrush.fillStyle =  color;
+	paintbrush.fillRect(x, y, 50, 50);
+	paintbrush.fillStroke = color;
+	paintbrush.strokeRect(x, y, 50, 50);	
+	
+	}
+	// theres two ways of repeat methods. Meaning both can be used 'for' or 'while'
+	/*
+	var x = 0;
+	while(x < 600){
+		drawSquare(x, 0, 'green');
+		x = x + 50;
+	}
+	*/
+
+	for(var x = 0; x < 600; x = x + 50){
+		drawSquare(x, 0, 'green');
+	}
+</script>

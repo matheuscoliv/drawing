@@ -1,0 +1,36 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+    var screen = document.querySelector('canvas');
+    var paintbrush = screen.getContext('2d');
+
+    paintbrush.fillStyle = 'grey';
+    paintbrush.fillRect(0, 0, 600, 400);
+
+    var draw = false;
+
+  // atribuindo diretamente a função anônima
+   screen.onmousemove = function(event) {
+
+        if(draw) {
+            var x = event.pageX - tela.offsetLeft;
+            var y = event.pageY - tela.offsetTop;
+            paintbrush.fillStyle = 'blue';
+            paintbrush.beginPath();
+            paintbrush.arc(x, y, 10, 0, 2 * 3.14);
+            paintbrush.fill();
+        }
+        console.log(x + ',' + y);
+    }
+
+    screen.onmousedown = function() {
+
+        draw = true;
+    }
+
+     screen.onmouseup = function() {
+
+        draw = false;
+    }
+
+</script>

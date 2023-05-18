@@ -1,0 +1,39 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var screen = document.querySelector('canvas');
+    var paintbrush = screen.getContext('2d');
+
+    paintbrush.fillStyle = 'lightgray';
+    paintbrush.fillRect(0, 0, 600, 400);
+
+    var radius = 10;
+
+    function drawCircle(x, y, radius, color) {
+
+        paintbrush.fillStyle = color;
+        paintbrush.beginPath();
+        paintbrush.arc(x, y, radius, 0, 2 * Math.PI);
+        paintbrush.fill();
+    }
+
+    drawCircle(300,200, radius + 20, 'red'); // greatest circle
+    drawCircle(300,200, radius + 10, 'white');
+    drawCircle(300,200, radius, 'red'); // smaller circle
+
+    function shoot(event) {
+
+        var x = event.pageX - screen.offsetLeft;
+        var y = event.pageY - screen.offsetTop;
+       if ((x > 300 - radius) &&
+      (x < 300 + radius) &&
+      (y > 200 - radius) &&
+      (y < 200 + radius)) {
+      alert('You hit the center of the target!');
+    }
+}
+
+    screen.onclick = shoot;
+
+</script>

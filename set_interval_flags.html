@@ -1,0 +1,64 @@
+<!-- flags.html -->
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+function drawBrazilFlag() {
+    var screen = document.querySelector('canvas');
+    var paintbrush = screen.getContext('2d');
+
+    paintbrush.fillStyle="green";
+    paintbrush.fillRect(0, 0, 600, 400);
+
+    paintbrush.fillStyle="yellow";
+    paintbrush.beginPath();
+    paintbrush.moveTo(300, 50);
+    paintbrush.lineTo(50, 200);
+    paintbrush.lineTo(550, 200);
+    paintbrush.fill();
+
+    paintbrush.beginPath();
+    paintbrush.moveTo(50, 200);
+    paintbrush.lineTo(300, 350);
+    paintbrush.lineTo(550, 200);
+    paintbrush.fill();
+
+    paintbrush.fillStyle="darkblue";
+    paintbrush.beginPath();
+
+    paintbrush.arc(300, 200, 100, 0, 2* 3.14);
+    paintbrush.fill();
+}
+
+
+function drawGermanyFlag() {
+    var screen = document.querySelector('canvas');
+    var paintbrush = screen.getContext('2d');
+
+    paintbrush.fillStyle = 'black';
+    paintbrush.fillRect(0, 0, 600, 133);
+
+    paintbrush.fillStyle = 'red';
+    paintbrush.fillRect(0, 133, 600, 133);
+
+    paintbrush.fillStyle = 'yellow';
+    paintbrush.fillRect(0, 266, 600, 133);
+}
+
+    var showBrazil = true;
+
+    function switchFlags() {
+
+        if(showBrazil == true) {
+            drawBrazilFlag();
+            showBrazil = false;
+        } else {
+            drawGermanyFlag();
+            showBrazil = true;
+        }
+    }
+    setInterval(switchFlags, 3000);
+
+
+</script>
